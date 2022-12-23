@@ -1,11 +1,10 @@
 const express = require('express')
 const router = express.Router();
-const sequelize = require('sequelize');
 const { Op } = require('sequelize');
 const { requireAuth } = require("../../utils/auth.js");
 const { User, Spot, Booking, SpotImage, ReviewImage, Review } = require('../../db/models');
 
-router.get('/', async (req, res, next) => {
+router.get('/', async (req, res) => {
 
     const pagination = {}
     const where = {}
@@ -138,7 +137,7 @@ router.post('/', requireAuth,  async (req, res, next) => {
     return res.json(createdSpot)
 })
 
-router.get('/current', requireAuth, async (req, res, next) => {
+router.get('/current', requireAuth, async (req, res) => {
     const spotsOfUser = await Spot.findAll({
         where: {
             ownerId: req.user.id
@@ -169,7 +168,7 @@ router.get('/current', requireAuth, async (req, res, next) => {
     })
 })
 
-router.get('/:spotId/reviews', async (req, res, next) => {
+router.get('/:spotId/reviews', async (req, res) => {
     const spot = await Spot.findByPk(req.params.spotId)
 
 
@@ -202,7 +201,7 @@ router.get('/:spotId/reviews', async (req, res, next) => {
     })
 })
 
-router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
+router.get('/:spotId/bookings', requireAuth, async (req, res) => {
 
     const spot = await Spot.findByPk(req.params.spotId)
 
@@ -297,7 +296,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res, next) => {
     return res.json(createdReview)
 })
 
-router.post('/:spotId/bookings', requireAuth, async (req, res, next) => {
+router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     const { startDate, endDate } = req.body
     const dateStart = new Date(startDate)
     const dateEnd = new Date(endDate)
@@ -378,7 +377,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res, next) => {
 })
 
 
-router.post('/:spotId/images', requireAuth, async (req, res, next) => {
+router.post('/:spotId/images', requireAuth, async (req, res) => {
     const spot = await Spot.findByPk(req.params.spotId)
     const { url, preview } = req.body
 
@@ -486,7 +485,7 @@ router.put('/:spotId', requireAuth, async (req, res, next) => {
 })
 
 
-router.get('/:spotId', async (req, res, next) => {
+router.get('/:spotId', async (req, res) => {
     let spot = await Spot.findOne({
         where: {
             id: req.params.spotId
@@ -540,7 +539,7 @@ router.get('/:spotId', async (req, res, next) => {
     return res.json(spot)
 })
 
-router.delete('/:spotId', requireAuth, async (req, res, next) => {
+router.delete('/:spotId', requireAuth, async (req, res) => {
     const spot = await Spot.findByPk(req.params.spotId)
 
     if(!spot){
