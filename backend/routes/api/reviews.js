@@ -1,11 +1,9 @@
 const express = require('express')
 const router = express.Router();
-const sequelize = require('sequelize');
-const { Op } = require('sequelize');
 const { requireAuth } = require("../../utils/auth.js");
-const { User, Spot, Booking, Review, SpotImage, ReviewImage } = require('../../db/models');
+const { User, Spot, Review, SpotImage, ReviewImage } = require('../../db/models');
 
-router.get('/current', requireAuth, async (req, res, next) => {
+router.get('/current', requireAuth, async (req, res) => {
     const userId = req.user.id
     const reviews = await Review.findAll({
         where: {
@@ -54,7 +52,7 @@ router.get('/current', requireAuth, async (req, res, next) => {
     })
 })
 
-router.post('/:reviewId/images', requireAuth, async (req, res, next) => {
+router.post('/:reviewId/images', requireAuth, async (req, res) => {
     const userId = req.user.id
     const { url } = req.body
     const review = await Review.findOne({
@@ -100,7 +98,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res, next) => {
 
 })
 
-router.put('/:reviewId', requireAuth, async (req, res, next) => {
+router.put('/:reviewId', requireAuth, async (req, res) => {
     const userId = req.user.id
     const { review, stars } = req.body
     const reviewToFind = await Review.findOne({
@@ -144,7 +142,7 @@ router.put('/:reviewId', requireAuth, async (req, res, next) => {
     return res.json(reviewToFind)
 })
 
-router.delete('/:reviewId', requireAuth, async (req, res, next) => {
+router.delete('/:reviewId', requireAuth, async (req, res) => {
     const review = await Review.findByPk(req.params.reviewId)
 
     if(!review){

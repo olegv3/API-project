@@ -1,10 +1,9 @@
 const express = require('express')
 const router = express.Router();
-const sequelize = require('sequelize');
 const { requireAuth } = require("../../utils/auth.js");
-const { User, Spot, Booking, SpotImage, ReviewImage, Review } = require('../../db/models');
+const { Spot, Booking, SpotImage, } = require('../../db/models');
 
-router.get('/current', requireAuth, async (req, res, next) => {
+router.get('/current', requireAuth, async (req, res) => {
     const userId = req.user.id
 
     const bookingsOfUser = await Booking.findAll({
@@ -33,7 +32,6 @@ router.get('/current', requireAuth, async (req, res, next) => {
 
     const newBookings = []
     bookingList.forEach((booking) => {
-        // verify that there is a spotimage
         if(booking.Spot.SpotImages.length){
             booking.Spot.previewImage = booking.Spot.SpotImages[0].url
         }
@@ -50,7 +48,7 @@ router.get('/current', requireAuth, async (req, res, next) => {
     })
 })
 
-router.put('/:bookingId', requireAuth, async (req, res, next) => {
+router.put('/:bookingId', requireAuth, async (req, res) => {
     const { startDate, endDate } = req.body
     const dateStart = new Date(startDate)
     const dateEnd = new Date(endDate)
@@ -64,7 +62,7 @@ router.put('/:bookingId', requireAuth, async (req, res, next) => {
         })
     }
 
-    const bookingStartDate = new Date(booking.startDate)
+    // const bookingStartDate = new Date(booking.startDate)
     const bookingEndDate = new Date(booking.endDate)
 
     const today = new Date()
@@ -124,7 +122,7 @@ router.put('/:bookingId', requireAuth, async (req, res, next) => {
 
 })
 
-router.delete('/:bookingId', requireAuth, async (req, res, next) => {
+router.delete('/:bookingId', requireAuth, async (req, res) => {
     const booking = await Booking.findOne({
         where: {
             id: req.params.bookingId
