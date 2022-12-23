@@ -1,11 +1,9 @@
 const express = require('express')
 const router = express.Router();
-const sequelize = require('sequelize');
-const { Op } = require('sequelize');
 const { requireAuth } = require("../../utils/auth.js");
-const { User, Spot, Booking, SpotImage, ReviewImage, Review } = require('../../db/models');
+const { Spot, SpotImage } = require('../../db/models');
 
-router.delete('/:imageId', requireAuth, async (req, res, next) => {
+router.delete('/:imageId', requireAuth, async (req, res) => {
     const spotImage = await SpotImage.findOne({
         where: {
             id: req.params.imageId
