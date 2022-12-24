@@ -73,6 +73,8 @@ router.post(
             let user = await User.signup({ email, username, password, firstName, lastName }, {scope: 'currentUser'});
             let token = setTokenCookie(res, user);
             user = user.toJSON();
+            delete user.createdAt;
+            delete user.updatedAt;
             user.token = token;
             return res.json(user);
         }
