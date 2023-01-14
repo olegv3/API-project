@@ -62,7 +62,7 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
         })
     }
 
-    // const bookingStartDate = new Date(booking.startDate)
+    const bookingStartDate = new Date(booking.startDate)
     const bookingEndDate = new Date(booking.endDate)
 
     const today = new Date()
