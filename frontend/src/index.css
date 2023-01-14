@@ -1,1 +1,32 @@
-/* TODO Add site wide styles */
+button {
+  cursor: pointer;
+}
+
+body {
+  margin: 0px;
+  margin-bottom: 20px;
+}
+
+body, p{
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+form button, .demo-user-button {
+  background: linear-gradient(90deg,#e61e4d 0,#e31c5f 50%,#d70466);
+  height: 3rem;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-weight: bolder;
+  box-sizing: border-box;
+}
+
+.ul-errors {
+  margin-top: 0px;
+}
+

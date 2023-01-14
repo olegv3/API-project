@@ -1,0 +1,36 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+}
+
+.login-header {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid lightgray;
+    width: inherit;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 1rem;
+}
+
+.form-of-login {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    padding-bottom: 0px;
+}
+
+.fields-for-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fields-for-input input {
+    padding: 20px 20px 20px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
