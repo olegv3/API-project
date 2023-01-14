@@ -5,19 +5,28 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
+
   const sessionUser = useSelector(state => state.session.user);
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-      </li>
-      {isLoaded && (
-        <li>
-          <ProfileButton user={sessionUser} />
-        </li>
-      )}
-    </ul>
+    <div className='nav-bar-wrapper'>
+      <div className='nav-bar'>
+        <div>
+        <NavLink exact to="/" className='home-link'><i className="fa-regular fa-gem"></i> Luxbnb</NavLink>
+        </div>
+        <div style={{"width":"50px"}}></div>
+        {isLoaded && (
+          <div style={{"display": 'flex', 'alignItems': 'center', 'gap':'20px'}}>
+            <div>
+              { sessionUser && (
+                <NavLink to='/new' style={{"textDecoration":"underline"}}>Luxbnb your home</NavLink>
+              )}
+            </div>
+            <ProfileButton user={sessionUser} />
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
 

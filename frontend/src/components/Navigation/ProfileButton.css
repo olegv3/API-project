@@ -2,6 +2,11 @@
     display: none;
 }
 
+.profile-button {
+    color: rgb(90, 90, 90)
+}
+
+
 .profile-menu-button {
     font-size: 15px;
     padding-right: 5px;
@@ -9,28 +14,27 @@
 
 .profile-button {
     border: 1px solid #dddddd;
+    background-color: white;
     box-sizing: border-box;
-    border-radius: 20px;
+    border-radius: 25px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 75px;
-    height: 40px;
-    padding: 5px 5px 5px 12px;
-    font-size: 25px;
+    width: 85px;
+    height: 45px;
+    padding: 5px 0px 5px 15px;
+    font-size: 30px;
 }
 
 .profile-button:hover {
-    box-shadow: 0px 2px 5px lightgray;
+    transition: box-shadow 0.7s;
+    box-shadow: 0px 2px 5px rgb(165, 164, 164);
 }
 
 .account-buttons {
     display: flex;
     flex-direction: column;
 }
-/* .account-buttons:hover {
-    cursor: pointer;
-} */
 
 .account-buttons ul, li {
     padding: 15px;
