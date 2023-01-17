@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router();
+const sequelize = require('sequelize');
 const { requireAuth } = require("../../utils/auth.js");
-const { Spot, Booking, SpotImage, } = require('../../db/models');
+const { User, Spot, Booking, SpotImage, ReviewImage, Review } = require('../../db/models');
 
-router.get('/current', requireAuth, async (req, res) => {
+router.get('/current', requireAuth, async (req, res, next) => {
     const userId = req.user.id
 
     const bookingsOfUser = await Booking.findAll({
@@ -32,6 +33,7 @@ router.get('/current', requireAuth, async (req, res) => {
 
     const newBookings = []
     bookingList.forEach((booking) => {
+        
         if(booking.Spot.SpotImages.length){
             booking.Spot.previewImage = booking.Spot.SpotImages[0].url
         }
@@ -48,7 +50,7 @@ router.get('/current', requireAuth, async (req, res) => {
     })
 })
 
-router.put('/:bookingId', requireAuth, async (req, res) => {
+router.put('/:bookingId', requireAuth, async (req, res, next) => {
     const { startDate, endDate } = req.body
     const dateStart = new Date(startDate)
     const dateEnd = new Date(endDate)
@@ -122,7 +124,7 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
 
 })
 
-router.delete('/:bookingId', requireAuth, async (req, res) => {
+router.delete('/:bookingId', requireAuth, async (req, res, next) => {
     const booking = await Booking.findOne({
         where: {
             id: req.params.bookingId
@@ -157,7 +159,7 @@ router.delete('/:bookingId', requireAuth, async (req, res) => {
     } else if(today.getTime() >= bookingStartDate.getTime()) {
         res.status(403)
         return res.json({
-            "message": "Bookings that have been started can't be deleted",
+            "message": "Past bookings can't be modified",
             "statusCode": 403
           })
     }

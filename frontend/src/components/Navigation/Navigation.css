@@ -39,14 +39,9 @@
 .home-link {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 15px;
     font-weight:500;
     color: rgb(255, 90, 96);
-    font-size: 22px;
-}
-
-.fa-gem {
-    color: rgb(255, 90, 96);
-    right: 8px;
-    font-size:xx-large;
+    font-size: 40px;
+    font-family: Snell Roundhand, cursive;
 }

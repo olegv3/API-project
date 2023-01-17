@@ -12,14 +12,19 @@ function Navigation({ isLoaded }){
     <div className='nav-bar-wrapper'>
       <div className='nav-bar'>
         <div>
-        <NavLink exact to="/" className='home-link'><i className="fa-regular fa-gem"></i> Luxbnb</NavLink>
-        </div>
+          <NavLink exact to='/' className='home-link'>
+
+            <img className='home-link-img' src='https://cdn-icons-png.flaticon.com/32/2111/2111283.png' alt='luxbnb' />Luxbnb
+          </NavLink>
+            </div>
+
         <div style={{"width":"50px"}}></div>
         {isLoaded && (
           <div style={{"display": 'flex', 'alignItems': 'center', 'gap':'20px'}}>
             <div>
+
               { sessionUser && (
-                <NavLink to='/new' style={{"textDecoration":"underline"}}>Luxbnb your home</NavLink>
+                <NavLink to='/new' style={{"textDecoration":"underline"}}>List your home</NavLink>
               )}
             </div>
             <ProfileButton user={sessionUser} />

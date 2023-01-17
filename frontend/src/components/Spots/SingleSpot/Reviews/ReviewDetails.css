@@ -1,0 +1,11 @@
+.delete-review-button {
+
+    background: linear-gradient(90deg,#e61e4d 0,#e31c5f 50%,#d70466);
+    height: 2rem;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-weight: bolder;
+    box-sizing: border-box;
+    width: 7rem;
+}

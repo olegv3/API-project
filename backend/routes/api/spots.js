@@ -1,10 +1,11 @@
 const express = require('express')
 const router = express.Router();
+const sequelize = require('sequelize');
 const { Op } = require('sequelize');
 const { requireAuth } = require("../../utils/auth.js");
 const { User, Spot, Booking, SpotImage, ReviewImage, Review } = require('../../db/models');
 
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
 
     const pagination = {}
     const where = {}
@@ -119,7 +120,6 @@ router.post('/', requireAuth,  async (req, res, next) => {
         return next(error)
       }
 
-
     const createdSpot = await Spot.create({
         ownerId,
         address,
@@ -137,53 +137,38 @@ router.post('/', requireAuth,  async (req, res, next) => {
     return res.json(createdSpot)
 })
 
-router.get('/current', requireAuth, async (req, res) => {
-    const ownerId = req.user.id
-
-    const spots = await Spot.findAll({
+router.get('/current', requireAuth, async (req, res, next) => {
+    const spotsOfUser = await Spot.findAll({
         where: {
-            ownerId
+            ownerId: req.user.id
         },
         include: [
             {
                 model: SpotImage
-            },
-            {
-                model: Review
             }
         ]
     })
 
-    let spotList = []
-    spots.forEach(spot => {
-        spotList.push(spot.toJSON())
+    const spots = []
+    spotsOfUser.forEach(spot => {
+        spots.push(spot.toJSON())
     });
 
-    spotList.forEach(spot => {
+    spots.forEach(spot => {
         spot.SpotImages.forEach(image => {
             if(image.preview === true){
                 spot.previewImage = image.url
             }
         })
-        if(!spot.previewImage){
-            spot.previewImage = 'no preview image found'
-        }
         delete spot.SpotImages
+    })
 
-        let total = 0
-        spot.Reviews.forEach(review => {
-            if(review.stars) total += review.stars
-        })
-        if(total === 0) spot.avgRating = "no reviews"
-        else spot.avgRating = (total / spot.Reviews.length).toFixed(2)
-        delete spot.Reviews
-    }
-    )
-    return res.json(spotList)
+    return res.json({
+        Spots: spots
+    })
 })
 
-
-router.get('/:spotId/reviews', async (req, res) => {
+router.get('/:spotId/reviews', async (req, res, next) => {
     const spot = await Spot.findByPk(req.params.spotId)
 
 
@@ -216,7 +201,7 @@ router.get('/:spotId/reviews', async (req, res) => {
     })
 })
 
-router.get('/:spotId/bookings', requireAuth, async (req, res) => {
+router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
 
     const spot = await Spot.findByPk(req.params.spotId)
 
@@ -254,7 +239,6 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
     return res.json({
         Bookings: bookings
     })
-
 })
 
 router.post('/:spotId/reviews', requireAuth, async (req, res, next) => {
@@ -289,10 +273,9 @@ router.post('/:spotId/reviews', requireAuth, async (req, res, next) => {
         }
     })
 
-
     if(reviewOfUser.length) errors.push("User already has a review for this spot")
     if(!review) errors.push("Review text is required")
-    if(stars > 5 || stars < 1) errors.push("Stars must be from 1 to 5")
+    if(stars > 5 || stars < 1) errors.push("Stars must be an integer from 1 to 5")
 
     if(errors.length) {
         const error = new Error()
@@ -311,7 +294,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res, next) => {
     return res.json(createdReview)
 })
 
-router.post('/:spotId/bookings', requireAuth, async (req, res) => {
+router.post('/:spotId/bookings', requireAuth, async (req, res, next) => {
     const { startDate, endDate } = req.body
     const dateStart = new Date(startDate)
     const dateEnd = new Date(endDate)
@@ -392,7 +375,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
 })
 
 
-router.post('/:spotId/images', requireAuth, async (req, res) => {
+router.post('/:spotId/images', requireAuth, async (req, res, next) => {
     const spot = await Spot.findByPk(req.params.spotId)
     const { url, preview } = req.body
 
@@ -500,7 +483,7 @@ router.put('/:spotId', requireAuth, async (req, res, next) => {
 })
 
 
-router.get('/:spotId', async (req, res) => {
+router.get('/:spotId', async (req, res, next) => {
     let spot = await Spot.findOne({
         where: {
             id: req.params.spotId
@@ -554,7 +537,7 @@ router.get('/:spotId', async (req, res) => {
     return res.json(spot)
 })
 
-router.delete('/:spotId', requireAuth, async (req, res) => {
+router.delete('/:spotId', requireAuth, async (req, res, next) => {
     const spot = await Spot.findByPk(req.params.spotId)
 
     if(!spot){

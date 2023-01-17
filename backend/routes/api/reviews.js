@@ -1,9 +1,11 @@
 const express = require('express')
 const router = express.Router();
+const sequelize = require('sequelize');
+const { Op } = require('sequelize');
 const { requireAuth } = require("../../utils/auth.js");
-const { User, Spot, Review, SpotImage, ReviewImage } = require('../../db/models');
+const { User, Spot, Booking, Review, SpotImage, ReviewImage } = require('../../db/models');
 
-router.get('/current', requireAuth, async (req, res) => {
+router.get('/current', requireAuth, async (req, res, next) => {
     const userId = req.user.id
     const reviews = await Review.findAll({
         where: {
@@ -21,7 +23,7 @@ router.get('/current', requireAuth, async (req, res) => {
                 },
                 include: [
                     {
-                        model: SpotImage,
+                        model: SpotImage
                     }
                 ]
             },
@@ -52,7 +54,8 @@ router.get('/current', requireAuth, async (req, res) => {
     })
 })
 
-router.post('/:reviewId/images', requireAuth, async (req, res) => {
+router.post('/:reviewId/images', requireAuth, async (req, res, next) => {
+    console.log('in review image')
     const userId = req.user.id
     const { url } = req.body
     const review = await Review.findOne({
@@ -98,7 +101,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
 
 })
 
-router.put('/:reviewId', requireAuth, async (req, res) => {
+router.put('/:reviewId', requireAuth, async (req, res, next) => {
     const userId = req.user.id
     const { review, stars } = req.body
     const reviewToFind = await Review.findOne({
@@ -106,7 +109,6 @@ router.put('/:reviewId', requireAuth, async (req, res) => {
             id: req.params.reviewId
         }
     })
-
 
     if (!reviewToFind){
         res.status(404)
@@ -127,7 +129,7 @@ router.put('/:reviewId', requireAuth, async (req, res) => {
             "statusCode": 400,
             "errors": {
               "review": "Review text is required",
-              "stars": "Stars must be from 1 to 5",
+              "stars": "Stars must be an integer from 1 to 5",
             }
         })
     }
@@ -142,7 +144,7 @@ router.put('/:reviewId', requireAuth, async (req, res) => {
     return res.json(reviewToFind)
 })
 
-router.delete('/:reviewId', requireAuth, async (req, res) => {
+router.delete('/:reviewId', requireAuth, async (req, res, next) => {
     const review = await Review.findByPk(req.params.reviewId)
 
     if(!review){

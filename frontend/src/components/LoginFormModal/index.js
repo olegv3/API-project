@@ -15,8 +15,8 @@ function LoginFormModal() {
     setCredential('')
     setPassword('')
     let user = {
-      credential: 'commonUser',
-      password: 'password'
+      credential: 'john.smith@gmail.com',
+      password: 'secret password'
     }
     return dispatch(sessionActions.login(user)).then(closeModal)
       .catch(
@@ -69,7 +69,7 @@ function LoginFormModal() {
           </div>
         <button style={{"marginBottom":"10px"}} type="submit">Log In</button>
       </form>
-        <button style={{"marginBottom":"10px", "width":"430px", "position":"relative", "left":"25px"}} className="demo-user-button" type="submit" onClick={loginDemoUser}>Demo User</button>
+        <button style={{"marginBottom":"20px", "width":"430px", "position":"relative", "left":"25px"}} className="demo-user-button" type="submit" onClick={loginDemoUser}>Demo User</button>
     </div>
   );
 }

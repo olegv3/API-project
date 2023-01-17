@@ -59,3 +59,7 @@
 .profile-actions:hover {
     background-color: rgb(231, 231, 231);
 }
+
+/* .profile-dropdown {
+    z-index: 1;
+} */

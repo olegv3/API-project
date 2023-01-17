@@ -12,10 +12,10 @@ const validateLogin = [
   check('credential')
     .exists({ checkFalsy: true })
     .notEmpty()
-    .withMessage('Email or username is required'),
+    .withMessage('Please provide a valid email or username.'),
   check('password')
     .exists({ checkFalsy: true })
-    .withMessage('Password is required'),
+    .withMessage('Please provide a password.'),
   handleValidationErrors
 ];
 
@@ -46,17 +46,18 @@ router.post('/', validateLogin, async (req, res, next) => {
     let user = await User.login({ credential, password });
 
     if (!user) {
-        res.status(401),
-        res.json(
-        {
-            "message": "Invalid credentials",
-            "statusCode": 401,
-        })
+      const err = new Error('Login failed');
+      err.status = 401;
+      err.title = 'Invalid credentials';
+      err.errors = ['The provided credentials were invalid.'];
+      return next(err);
     }
 
-    setTokenCookie(res, user);
+    await setTokenCookie(res, user);
 
     user = user.toSafeObject()
+
+    user.token = ""
 
     return res.json({
       user: user
@@ -72,4 +73,3 @@ router.delete('/', (_req, res) => {
 
 
 module.exports = router;
-

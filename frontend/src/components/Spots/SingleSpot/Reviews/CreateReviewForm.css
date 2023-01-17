@@ -1,0 +1,15 @@
+.errors {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.review-form button {
+    width: 90%;
+    padding: 0px;
+}

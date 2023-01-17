@@ -12,10 +12,10 @@ module.exports = {
     options.tableName = 'Users';
     return queryInterface.bulkInsert(options, [
       {
-        firstName: 'Oleg',
-        lastName: 'Volkov',
+        firstName: 'Demo',
+        lastName: 'lition',
         email: 'demo@user.io',
-        username: 'Oleg',
+        username: 'commonUser',
         hashedPassword: bcrypt.hashSync('password'),
       },
       {
@@ -36,7 +36,7 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    
+
     options.tableName = 'Users';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
