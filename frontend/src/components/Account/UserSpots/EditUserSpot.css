@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux"
+/* import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { updateSpot } from "../../../store/spots"
@@ -75,56 +75,56 @@ export default function EditUserSpot () {
     return (
         <div>
             <form className="create-spot-form" onSubmit={handleSubmit}>
-            <button onClick={() => history.push('/account/spots')} style={{"padding":"5px", "height":"0px","color":"black", "position":"relative", "bottom":"-8px","right":"155px", "border":"none", "background":"none", "cursor":"pointer"}}>X</button>
+            <button onClick={() => history.push('/account/spots')}>X</button>
                 {errors.length !== 0 &&
-                <ul style={{"marginBottom":"0px"}}>
+                <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
                 }
-                <h4 style={{"marginTop":"0px"}}>Update {spot.name}</h4>
-                <input style={{"borderRadius":"10px 10px 10px 10px", "marginBottom": "10px"}}
+                <h4> Update {spot.name}</h4>
+                <input
                     type={'text'}
                     placeholder={'Address'}
                     required
                     value={address}
                     onChange={updateAddress}
                 />
-                <input style={{"borderRadius":"10px 10px 10px 10px", "marginBottom": "10px"}}
+                <input
                     type={'text'}
                     placeholder={'City'}
                     required
                     value={city}
                     onChange={updateCity}
                 />
-                <input style={{"borderRadius":"10px 10px 10px 10px", "marginBottom": "10px"}}
+                <input
                     type={'text'}
                     placeholder={'State'}
                     required
                     value={state}
                     onChange={updateState}
                 />
-                <input style={{"borderRadius":"10px 10px 10px 10px", "marginBottom": "10px" }}
+                <input
                     type={'text'}
                     placeholder={'Country'}
                     required
                     value={country}
                     onChange={updateCountry}
                 />
-                <input style={{"borderRadius":"10px 10px 10px 10px", "marginBottom": "10px"}}
+                <input
                     type={'text'}
                     placeholder={'Name of House'}
                     required
                     value={name}
                     onChange={updateName}
                 />
-                <input style={{"borderRadius":"10px 10px 10px 10px", "marginBottom": "10px"}}
+                <input
                     type={'text'}
                     placeholder={'Description'}
                     required
                     value={description}
                     onChange={updateDescription}
                 />
-                <input style={{"borderRadius":"10px 10px 10px 10px", "marginBottom": "20px"}}
+                <input
                     type={'number'}
                     placeholder={'Price per night'}
                     required
@@ -136,4 +136,12 @@ export default function EditUserSpot () {
             </form>
         </div>
     )
+} */
+
+/* add css to EditUserSpot.css to give spacing between each input*/
+
+
+.submitButton {
+    margin-bottom: 15px;
 }
+

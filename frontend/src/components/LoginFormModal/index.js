@@ -15,8 +15,8 @@ function LoginFormModal() {
     setCredential('')
     setPassword('')
     let user = {
-      credential: 'john.smith@gmail.com',
-      password: 'secret password'
+      credential: 'demo@user.io',
+      password: 'password'
     }
     return dispatch(sessionActions.login(user)).then(closeModal)
       .catch(
