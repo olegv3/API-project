@@ -20,8 +20,8 @@ export default function UserReviews () {
 
     if(!usersReviews) return null
     return (
-        <div style={{"margin":"40px", "padding":"0px 10px", "display":"flex", "flexDirection":"column", "border":"lightGray solid 1px", "borderRadius":"10px"}}>
-            <h2 style={{"borderBottom":"solid lightgray 1px", "padding":"10px"}}>Your Reviews:</h2>
+        <div style={{"margin":"40px", "padding":"0px 10px", "display":"flex", "flexDirection":"column", "border":"lightGray solid .5px", "borderRadius":"10px"}}>
+            <h2 style={{"borderBottom":"solid lightgray 1px", "padding":"10px"}}>Your Reviews</h2>
             {usersReviews.length ? (usersReviews.map((review) => (
                 <UserReviewDetails key={review.id} {...review} />
                 ))

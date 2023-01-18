@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 import { getAllSpots, removeSpot } from "../../../store/spots"
+// import "./EditUserSpot.css"
 
 export default function UserSpotDetails (spot) {
     const dispatch = useDispatch()
