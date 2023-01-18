@@ -1,16 +1,13 @@
-
-
 .profile-main-wrapper {
-    position: absolute;
-    left: 150px;
-    top: 180px;
+    position: center;
     width: auto;
-    height: 190px;
+    height: auto;
     background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    align-items: flex-start;
     }
 
     .profile-main-wrapper h1 {
@@ -27,4 +24,6 @@
         align-items: center;
         justify-content: left;
         margin-bottom: 10px;
+        align-items: flex-start;
+        padding: 2px;
     }
