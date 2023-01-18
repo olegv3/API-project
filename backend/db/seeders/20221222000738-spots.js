@@ -23,10 +23,10 @@ module.exports = {
         lng: -122.427,
         name: 'App Academy',
         description: 'Place where web developers are created',
-        price: 123,
+        price: 825,
       },
       {
-        ownerId: 2,
+        ownerId: 1,
         address: '333 West Road',
         city: 'Fort Lee',
         state: 'New Jersey',
@@ -35,10 +35,10 @@ module.exports = {
         lng: 77.47,
         name: 'Home',
         description: 'Just like home',
-        price: 223,
+        price: 750,
       },
       {
-        ownerId: 3,
+        ownerId: 1,
         address: '21 Hurricane Lane',
         city: 'Miami',
         state: 'Florida',
@@ -47,7 +47,7 @@ module.exports = {
         lng: 52.427,
         name: 'Windy village',
         description: 'Ocean views',
-        price: 323,
+        price: 575,
       },
     ], {});
     }
