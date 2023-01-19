@@ -6,6 +6,12 @@
     color: rgb(90, 90, 90)
 }
 
+.profile-picture {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+}
+
 
 .profile-menu-button {
     font-size: 15px;
@@ -59,7 +65,3 @@
 .profile-actions:hover {
     background-color: rgb(231, 231, 231);
 }
-
-/* .profile-dropdown {
-    z-index: 1;
-} */

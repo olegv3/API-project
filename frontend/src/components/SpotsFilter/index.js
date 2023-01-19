@@ -46,3 +46,6 @@ function SpotsFilter() {
 
 
 export default SpotsFilter
+
+
+

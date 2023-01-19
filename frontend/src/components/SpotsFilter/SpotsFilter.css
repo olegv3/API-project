@@ -1,4 +1,4 @@
-.filter-container {
+/* .filter-container {
     display: flex;
     height: auto;
     padding-top: 30px;
@@ -8,11 +8,10 @@
     left: 0;
     right: 0;
     background-color: white;
-    z-index: -1;
+    z-index: 0;
+} */
 
-}
-
-.filter-icons {
+/* .filter-icons {
     position: fixed;
     display: flex;
     justify-content: space-evenly;
@@ -20,7 +19,7 @@
     width: 90%;
     height: 130px;
     background-color: white;
-}
+} */
 
 .filter-icon {
     display: flex;
@@ -30,8 +29,153 @@
     width: 30px;
     height: 30px;
     background-color: white;
-    padding-top: 5px;
+    padding-top: 9px;
+    padding-left: 5px;
+    margin-top: 6px;
 }
+
+.filter-icon1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    padding-top: 9px;
+    padding-left: 5px;
+    margin-top: 6px;
+}
+
+.filter-icon2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    padding-top: 9px;
+    padding-left: 5px;
+    margin-top: 6px;
+}
+
+.filter-icon3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    padding-top: 9px;
+    padding-left: 5px;
+    margin-top: 6px;
+}
+
+.filter-icon4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    padding-top: 9px;
+    padding-left: 5px;
+    margin-top: 6px;
+}
+
+.filter-icon5 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    /* padding-top:40px; */
+    padding-left: 5px;
+    /* margin-top: -19px; */
+    margin-top: 25px;
+    margin-bottom: -10px;
+}
+
+.filter-icon6 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    padding-top: 10px;
+    padding-left: 5px;
+    margin-top: 15px;
+    margin-bottom: -10px;
+}
+
+
+h4 {
+    font-size: 14px;
+    color: rgb(120, 120, 120);
+    background-color: white;
+    padding-bottom: 10px;
+    font-size: 11px;
+    padding-left: 5px;
+    font-weight: 400;
+}
+
+h3 {
+    font-size: 14px;
+    color: rgb(120, 120, 120);
+    background-color: white;
+    padding-bottom: 10px;
+    font-size: 11px;
+    padding-left: 5px;
+    font-weight: 400;
+}
+
+h2 {
+    font-size: 14px;
+    color: rgb(120, 120, 120);
+    background-color: white;
+    padding-bottom: 10px;
+    font-size: 11px;
+    padding-left: 5px;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 14px;
+    color: rgb(120, 120, 120);
+    background-color: white;
+    padding-bottom: 10px;
+    font-size: 11px;
+    padding-left: 5px;
+    font-weight: 400;
+}
+
+h5 {
+    font-size: 14px;
+    color: rgb(120, 120, 120);
+    background-color: white;
+    padding-bottom: 10px;
+    font-size: 11px;
+    padding-left: 5px;
+    font-weight: 400;
+}
+
+h6 {
+    font-size: 14px;
+    color: rgb(120, 120, 120);
+    background-color: white;
+    padding-bottom: 10px;
+    font-size: 11px;
+    padding-left: 5px;
+    font-weight: 400;
+}
+
 
 .filter-icon p {
     font-size: 14px;
@@ -39,6 +183,7 @@
     background-color: white;
     padding-bottom: 10px;
     font-size: 11px;
+    padding-left: 5px;
 }
 
 .filter-icon:hover p {

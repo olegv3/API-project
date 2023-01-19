@@ -43,11 +43,21 @@ function ProfileButton({ user }) {
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
+
+  const profilePicture = () => {
+    if (!user){
+        return "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+    }else if(user){
+        return "https://cdn-icons-png.flaticon.com/512/236/236831.png"
+    }
+  }
+
   return (
     <>
       <button onClick={openMenu} className="profile-button">
       <i className="fa-sharp fa-solid fa-bars profile-menu-button"></i>
-      <i className="fas fa-user-circle" />
+      {/* <i className="fas fa-user-circle" /> */}
+      <img className="profile-picture" src={profilePicture()} alt=""></img>
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
