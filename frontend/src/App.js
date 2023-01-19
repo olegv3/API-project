@@ -8,7 +8,7 @@ import Spots from "./components/Spots";
 import SingleSpot from "./components/Spots/SingleSpot/SingleSpot";
 import CreateSpotForm from "./components/Spots/CreateSpotForm";
 import Account from "./components/Account";
-import SpotsFilter from "./components/SpotsFilter";
+// import SpotsFilter from "./components/SpotsFilter";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,25 +22,23 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <SpotsFilter />
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
             <Spots />
           </Route>
-
           <Route path='/spots/:id'>
             <SingleSpot isLoaded={isLoaded}/>
           </Route>
-
           <Route path='/account'>
             <Account />
           </Route>
-
           <Route path='/new'>
             <CreateSpotForm />
           </Route>
-
+          <Route path='/spots'>
+            <Spots />
+          </Route>
           <Route>
             <h1>Page Not Found</h1>
           </Route>
