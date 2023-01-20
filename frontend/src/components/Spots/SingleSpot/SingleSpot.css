@@ -23,6 +23,8 @@
     padding: 0px 275px 0px 375px;
 }
 
+
+
 .header {
     padding-top: 20px;
     width: 28rem;
@@ -100,6 +102,8 @@
     border-radius: 15px;
     box-sizing: border-box;
     box-shadow: 1px 1px 5px gray;
+    z-index: -1;
+
 }
 
 .spacing {
