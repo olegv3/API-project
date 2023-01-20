@@ -19,7 +19,7 @@ return (
           </NavLink>
             </div>
 
-            <div className='filter-icon'>
+            {/* <div className='filter-icon'>
                 <img className='filter-icon1' src='https://cdn-icons-png.flaticon.com/128/2855/2855440.png' alt='Mansions' />
                 <h1>Mansions</h1>
             </div>
@@ -42,14 +42,14 @@ return (
             <div className='filter-icon'>
             <img className='filter-icon6' src='https://cdn-icons-png.flaticon.com/128/1008/1008165.png' alt='OMG!' />
                 <h6>OMG!</h6>
-            </div>
+            </div> */}
         <div style={{"width":"50px"}}></div>
         {isLoaded && (
           <div style={{"display": 'flex', 'alignItems': 'center', 'gap':'20px'}}>
             <div>
 
               { sessionUser && (
-                <NavLink to='/new' style={{'color':'black', 'textDecoration':'none', 'fontSize':'20px', 'fontWeight':'200', 'fontFamily':'helvetica'}}>List your home</NavLink>
+                <NavLink to='/new' style={{'color':'black', 'textDecoration':'none', 'fontSize':'20px', 'fontWeight':'200', 'fontFamily':'helvetica'}}>Luxbnb your home</NavLink>
               )}
             </div>
             <ProfileButton user={sessionUser} />

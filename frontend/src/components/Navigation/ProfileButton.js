@@ -48,7 +48,7 @@ function ProfileButton({ user }) {
     if (!user){
         return "https://cdn-icons-png.flaticon.com/512/149/149071.png"
     }else if(user){
-        return "https://cdn-icons-png.flaticon.com/512/236/236831.png"
+        return "https://cdn-icons-png.flaticon.com/512/9218/9218712.png"
     }
   }
 
