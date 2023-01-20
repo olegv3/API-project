@@ -48,14 +48,20 @@ function SingleSpot () {
                 </div>
             </div>
             <div className="image-container">
-                <img className="first-spot-image" src={spot.SpotImages[0].url} alt='first'/>
+                {spot.SpotImages?.map((image, i) => (
+                    (i === 0 ?
+                    <div key={i}><img className="first-spot-image" src={image.url} alt={i}/></div>
+                    : <img key={i} className="spot-image" src={image.url} alt={i}/>)
+                ))}
             </div>
+            <div className="reserve-form"><ReserveForm {...spot} /></div>
+
             <div className="details">
                 <div className="host">
                     <h3 style={{"width":"20.15rem"}}>This home hosted by {spot.Owner.firstName}</h3>
                     <div></div>
                 </div>
-                <div className="reserve-form"><ReserveForm {...spot} /></div>
+                {/* <div className="reserve-form"><ReserveForm {...spot} /></div> */}
             </div>
             <div>
                 {showForm ? (

@@ -38,7 +38,7 @@
 
 .nav-bar-wrapper {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
     height: fit-content;
     border-bottom: solid .5px #c8c8c8;
@@ -51,7 +51,7 @@
 .nav-bar {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 90%;
     height: 80px;
     background-color: white;

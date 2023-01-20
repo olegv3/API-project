@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { updateSpot } from "../../../store/spots"
-// import './EditUserSpot.css'
 
 
 export default function EditUserSpot () {

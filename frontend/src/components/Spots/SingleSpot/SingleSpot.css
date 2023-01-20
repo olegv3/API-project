@@ -1,8 +1,26 @@
+@media only screen and (max-width: 1450px) {
+    .spot-image:last-child{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1450px) {
+    .spot-image {
+        border-radius: 0px 15px 15px 0px;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .spot-image {
+        display: none;
+    }
+}
+
 .wrapper-for-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 100px 275px 0px 120px;
+    padding: 0px 275px 0px 375px;
 }
 
 .header {
@@ -11,7 +29,10 @@
 }
 
 .spot-header {
-    margin: 0px;
+    font-size: 24px;
+        font-weight: 600;
+        color: #2d2d2d;
+        margin-top: 10px;
 }
 
 .sub-info {
@@ -52,6 +73,13 @@
     padding-top: 40px;
     padding-bottom: 20px;
     border-bottom: solid 1px rgb(192, 192, 192);
+
+}
+
+.host h3 {
+    font-size: 20px;
+        font-weight: 600;
+        color: #2d2d2d;
 }
 
 .reserve-form {
@@ -61,15 +89,15 @@
 }
 
 .form-container {
-    margin-top: 10px;
+    position: absolute;
+    left: 900px;
+    top: 140px;
     display: flex;
     align-items: center;
-    flex-direction: column;
-    justify-content: center;
     width: fit-content;
-    height: 75%;
-    border: 1px solid gray;
-    border-radius: 10px;
+    height: 60px;
+    border: .5px solid gray;
+    border-radius: 15px;
     box-sizing: border-box;
     box-shadow: 1px 1px 5px gray;
 }
@@ -84,25 +112,28 @@
 
 .image-container {
     display: flex;
-    gap: 10px;
+    gap: 5px;
     height: 100%;
     width: 100%;
     margin-top: 10px;
     border-radius: 10px;
-    flex-wrap: wrap;
 }
 
 .first-spot-image {
-    border-radius: 10px 0px 0px 10px;
-    width: 450px;
+    border-radius: 15px 0px 0px 15px;
+    width: 350px;
     height: 450px;
     object-fit: cover;
 }
 
 .spot-image {
-    width: 200px;
-    height: 200px;
+    width: 350px;
+    height: 450px;
     object-fit: cover;
+}
+
+.spot-image:last-child {
+    border-radius: 0px 15px 15px 0px;
 }
 
 .create-review-button {
@@ -114,4 +145,28 @@
     color: white;
     font-weight: bolder;
     box-sizing: border-box;
+}
+
+.ratings:nth-child(1)  {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2d2d2d;
+}
+
+h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2d2d2d;
+}
+
+p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #2d2d2d;
+    padding-left: 6px;
+}
+
+.delete-review-button {
+    position: absolute;
+    left: 800px;
 }
