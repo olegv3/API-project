@@ -32,6 +32,17 @@ function SingleSpot () {
     const rating = spot.avgStarRating
     const reviews = Object.values(useSelector(state => state.reviews.spot))
 
+    const extraPhotos = () => {
+        if(spot.SpotImages?.length === 1) return "https://sflands.com/wp-content/uploads/2021/05/Photos-Coming-Soon-830x620.jpg"
+        if(spot.SpotImages?.length === 2) return "https://sflands.com/wp-content/uploads/2021/05/Photos-Coming-Soon-830x620.jpg"
+        if(spot.SpotImages?.length === 3) return "https://sflands.com/wp-content/uploads/2021/05/Photos-Coming-Soon-830x620.jpg"
+        if(spot.SpotImages?.length === 4) return "https://sflands.com/wp-content/uploads/2021/05/Photos-Coming-Soon-830x620.jpg"
+        if(spot.SpotImages?.length === 5) return "https://sflands.com/wp-content/uploads/2021/05/Photos-Coming-Soon-830x620.jpg"
+        // if(spot.SpotImages?.length >= 6) return "https://sflands.com/wp-content/uploads/2021/05/Photos-Coming-Soon-830x620.jpg"
+    }
+
+
+
     if(!spot.Owner) return null
     return (
         <div className="wrapper-for-info">
@@ -48,20 +59,19 @@ function SingleSpot () {
                 </div>
             </div>
             <div className="image-container">
-                {spot.SpotImages?.map((image, i) => (
-                    (i === 0 ?
-                    <div key={i}><img className="first-spot-image" src={image.url} alt={i}/></div>
-                    : <img key={i} className="spot-image" src={image.url} alt={i}/>)
-                ))}
+            <img className="first-spot-image" src={spot.SpotImages[0].url} alt='first'/>
+                <img className="spot-image" src={extraPhotos()} alt="extra1"/>
+                <img className="spot-image" src={extraPhotos()} alt="extra2"/>
+                <img className="spot-image" src={extraPhotos()} alt="extra3"/>
+                <img className="spot-image" src={extraPhotos()} alt="extra4"/>
             </div>
-            <div className="reserve-form"><ReserveForm {...spot} /></div>
-
             <div className="details">
                 <div className="host">
-                    <h3 style={{"width":"20.15rem"}}>This home hosted by {spot.Owner.firstName}</h3>
+                    <h3 style={{"width":"18rem"}}>This home hosted by {spot.Owner.firstName}</h3>
                     <div></div>
+
                 </div>
-                {/* <div className="reserve-form"><ReserveForm {...spot} /></div> */}
+                <div className="reserve-form"><ReserveForm {...spot} /></div>
             </div>
             <div>
                 {showForm ? (
@@ -70,7 +80,7 @@ function SingleSpot () {
                     user && user.id !== spot.ownerId && <button className="create-review-button" onClick={formClick}>Create a review</button>
                 )}
                 {reviews.length ? (
-                    <Reviews reviews={reviews}/>
+                    <Reviews reviews={reviews} />
                 ) : (<div>No Reviews</div>)}
             </div>
         </div>

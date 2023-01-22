@@ -2,13 +2,14 @@
     display: flex;
     flex-direction: column;
     width: 30rem;
+    max-height: 90vh;
+    overflow:scroll;
 }
 
 .sign-up-header {
     display: flex;
     justify-content: center;
     border-bottom: 1px solid lightgray;
-    width: inherit;
     margin-top: 0px;
     margin-bottom: 0px;
     padding-bottom: 1rem;
@@ -17,7 +18,16 @@
 .form-of-sign {
     display: flex;
     flex-direction: column;
-    padding: 25px;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.form-of-sign h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2d2d2d;
+    margin-bottom: 10px;
+    margin-top: 1px;
 }
 
 .fields-for-input {
@@ -27,8 +37,9 @@
 }
 
 .fields-for-input input {
-    padding: 20px 20px 20px 10px;
+    padding: 20px 10px 15px 10px;
     width: 100%;
     box-sizing: border-box;
     font-size: 16px;
+
 }

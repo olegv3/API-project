@@ -28,6 +28,16 @@ module.exports = {
         preview: 'false'
       },
       {
+        spotId: 1,
+        url: 'https://a0.muscache.com/im/pictures/2c7758a7-bdd7-4453-a717-41d4c645420c.jpg?im_w=720',
+        preview: 'false'
+      },
+      {
+        spotId: 1,
+        url: 'https://a0.muscache.com/im/pictures/be347796-bf1c-4f11-b411-d1922a23e555.jpg?im_w=720',
+        preview: 'false'
+      },
+      {
         spotId: 2,
         url: 'https://a0.muscache.com/im/pictures/miso/Hosting-38883929/original/2c20c6a7-fa2d-40d9-81f1-b69e7f94a8cf.jpeg?im_w=720',
         preview: 'true'

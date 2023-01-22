@@ -3,7 +3,7 @@ import "./SingleSpot.css"
 export default function ReserveForm (spot) {
     const rating = spot.avgStarRating
     return (
-        <div className="form-container" style={{"paddingRight": "10px", "paddingLeft": "10px"}}>
+        <div className="form-container">
             <div>
                 <div className="sub-info gap-for-reserve">
                     <div><span style={{"fontWeight": "bold"}}>${spot.price}</span> night</div>

@@ -42,7 +42,7 @@ function SignupFormModal() {
         }
         <div className="fields-for-input">
             <input
-            style={{"borderRadius":"10px 10px 10px 10px", "marginBottom":"10px", border: "1px solid gray"}}
+            style={{"borderRadius":"10px 10px 10px 10px", "marginBottom":"5px", border: "1px solid gray"}}
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -50,7 +50,7 @@ function SignupFormModal() {
               required
             />
 
-            <input style={{"borderRadius":"10px 10px 10px 10px", "marginBottom":"10px", border: "1px solid gray"}}
+            <input style={{"borderRadius":"10px 10px 10px 10px", "marginBottom":"5px", border: "1px solid gray"}}
               type="text"
               value={username}
               placeholder='Username'
@@ -58,7 +58,7 @@ function SignupFormModal() {
               required
             />
 
-            <input style={{"borderRadius":"10px 10px 10px 10px", "marginBottom":"10px", border: "1px solid gray"}}
+            <input style={{"borderRadius":"10px 10px 10px 10px", "marginBottom":"5px", border: "1px solid gray"}}
               type="text"
               value={firstName}
               placeholder='First Name'
@@ -66,7 +66,7 @@ function SignupFormModal() {
               required
             />
 
-            <input style={{"borderRadius":"10px 10px 10px 10px", "marginBottom":"10px", border: "1px solid gray"}}
+            <input style={{"borderRadius":"10px 10px 10px 10px", "marginBottom":"5px", border: "1px solid gray"}}
               type="text"
               value={lastName}
               placeholder='Last Name'
@@ -74,7 +74,7 @@ function SignupFormModal() {
               required
             />
 
-            <input style={{"borderRadius":"10px 10px 10px 10px", "marginBottom":"10px", border: "1px solid gray"}}
+            <input style={{"borderRadius":"10px 10px 10px 10px", "marginBottom":"5px", border: "1px solid gray"}}
               type="password"
               value={password}
               placeholder='Password'
@@ -82,7 +82,7 @@ function SignupFormModal() {
               required
             />
 
-            <input style={{"borderRadius":"10px 10px 10px 10px", "marginBottom":"20px", border: "1px solid gray"}}
+            <input style={{"borderRadius":"10px 10px 10px 10px", "marginBottom":"5px", border: "1px solid gray"}}
               type="password"
               value={confirmPassword}
               placeholder='Confirm Password'

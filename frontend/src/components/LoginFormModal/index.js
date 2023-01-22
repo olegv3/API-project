@@ -52,14 +52,14 @@ function LoginFormModal() {
             </ul>
         }
           <div className="fields-for-input">
-              <input style={{"borderRadius":"10px 10px 10px 10px","marginBottom":"10px", border: "1px solid gray"}}
+              <input style={{"borderRadius":"10px 10px 10px 10px","marginBottom":"5px", border: "1px solid gray"}}
                 type="text"
                 value={credential}
                 placeholder='Username or Email'
                 onChange={(e) => setCredential(e.target.value)}
                 required
               />
-              <input style={{"borderRadius":"10px 10px 10px 10px", "marginBottom":"30px", border: "1px solid gray"}}
+              <input style={{"borderRadius":"10px 10px 10px 10px", "marginBottom":"20px", border: "1px solid gray"}}
                 type="password"
                 value={password}
                 placeholder="Password"
@@ -67,7 +67,7 @@ function LoginFormModal() {
                 required
               />
           </div>
-        <button style={{"marginBottom":"10px"}} type="submit">Log In</button>
+        <button style={{"marginBottom":"5px"}} type="submit">Log In</button>
       </form>
         <button style={{"marginBottom":"20px", "width":"430px", "position":"relative", "left":"25px"}} className="demo-user-button" type="submit" onClick={loginDemoUser}>Demo User</button>
     </div>

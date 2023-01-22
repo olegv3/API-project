@@ -29,3 +29,8 @@ form button, .demo-user-button {
 .ul-errors {
     margin-top: 0px;
 }
+
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+}

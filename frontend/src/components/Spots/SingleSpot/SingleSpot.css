@@ -1,151 +1,95 @@
-@media only screen and (max-width: 1450px) {
-    .spot-image:last-child{
-        display: none;
-    }
-}
-
-@media only screen and (max-width: 1450px) {
-    .spot-image {
-        border-radius: 0px 15px 15px 0px;
-    }
-}
-
-@media only screen and (max-width: 1100px) {
-    .spot-image {
-        display: none;
-    }
-}
-
-@media only screen and (max-width: 1100px) {
-    .first-spot-image {
-        border-top-right-radius: 15px;
-        border-bottom-right-radius: 15px;
-    }
-}
-
 .wrapper-for-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0px 275px 0px 375px;
+    padding: 0 12%;
+    margin: 0px 50px 0px 50px;
 }
-
-
 
 .header {
-    padding-top: 20px;
-    width: 28rem;
+    margin-top: 50px;
 }
 
-.spot-header {
+.header h2 {
     font-size: 24px;
-        font-weight: 600;
-        color: #2d2d2d;
-        margin-top: 10px;
-}
-
-.sub-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.width-for-info {
-    width: 25rem;
-}
-
-.gap-for-reserve {
-    gap: 1rem;
-}
-
-.share {
-    display: flex;
-    gap: 5px;
-    padding: 10px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: -15px;
 }
 
 .ratings {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    margin-bottom: -15px;
 }
 
-.details {
-    display: flex;
-    flex-direction: row;
+.ratings span {
+    margin: 20px 0px;
 }
 
-.host {
-    display: flex;
-    justify-content: space-between;
-    margin: 0px;
-    width: 1200px;
-    padding-top: 40px;
-    padding-bottom: 20px;
-    border-bottom: solid 1px rgb(192, 192, 192);
-
-}
-
-.host h3 {
-    font-size: 20px;
-        font-weight: 600;
-        color: #2d2d2d;
-}
-
-.reserve-form {
-    display: flex;
-    justify-content: right;
-    width: 100%;
-}
-
-.form-container {
-    position: absolute;
-    left: 900px;
-    top: 140px;
-    display: flex;
-    align-items: center;
-    width: fit-content;
-    height: 60px;
-    border: .5px solid gray;
-    border-radius: 15px;
-    box-sizing: border-box;
-    box-shadow: 1px 1px 5px gray;
-    z-index: -1;
-
-}
-
-.spacing {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 100px;
-    padding-top: 15px;
+.ratings span {
+    color: black;
+    font-size: 14px;
 }
 
 .image-container {
-    display: flex;
-    gap: 5px;
-    height: 100%;
-    width: 100%;
-    margin-top: 10px;
-    border-radius: 10px;
+    display: grid;
+    grid-gap: 10px;
+    min-height: 350px;
+    grid-template-areas:
+        "first second third"
+        "first fourt fifth";
+    grid-template-columns: 50% 25% 25%;
+    margin: 20px 0px 20px 0px;
 }
 
-.first-spot-image {
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    width: 350px;
-    height: 450px;
-    object-fit: cover;
+.image-container img {
+    width: 100%;
+    display: block;
+}
+
+.image-container > img:first-child {
+    grid-area: first;
 }
 
 .spot-image {
-    width: 350px;
-    height: 450px;
-    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.first-spot-image {
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.spot-image:nth-child(3) {
+    border-top-right-radius: 15px;
 }
 
 .spot-image:last-child {
-    border-radius: 0px 15px 15px 0px;
+    border-bottom-right-radius: 15px;
+}
+
+.reserve-form div {
+    text-align: right;
+    font-size: 20px;
+    font-weight: 300;
+    margin-top: -53px;
+    margin-bottom: 20px;
+}
+
+.details h3 {
+    margin-left: -5px;
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
+}
+
+h4 {
+    margin-left: -5px;
+    font-size: 14px;
+    font-weight: 400;
+    color: black;
 }
 
 .create-review-button {
@@ -157,28 +101,10 @@
     color: white;
     font-weight: bolder;
     box-sizing: border-box;
-}
-
-.ratings:nth-child(1)  {
-    font-size: 14px;
-    font-weight: 600;
-    color: #2d2d2d;
-}
-
-h4 {
-    font-size: 14px;
-    font-weight: 600;
-    color: #2d2d2d;
-}
-
-p {
-    font-size: 14px;
-    font-weight: 400;
-    color: #2d2d2d;
-    padding-left: 6px;
+    margin-bottom: 20px;
 }
 
 .delete-review-button {
     position: absolute;
-    left: 800px;
+    left: 747px;
 }
