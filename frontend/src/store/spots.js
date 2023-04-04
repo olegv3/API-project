@@ -42,7 +42,7 @@ const remove = (id) => {
 }
 
 export const createSpot = (spot, spotImage) => async dispatch => {
-
+    // need to implement spotImage and seperate data
     spot.lat = 32
     spot.lng = 43
     const response = await csrfFetch(`/api/spots`, {
@@ -52,11 +52,14 @@ export const createSpot = (spot, spotImage) => async dispatch => {
       })
 
     if(response.ok) {
+        const formData = new FormData();
+        formData.append("image", spotImage.url)
+        formData.append('preview', spotImage.preview)
         const spot = await response.json()
         const imageResponse = await csrfFetch(`/api/spots/${spot.id}/images`, {
             method: 'POST',
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(spotImage)
+            headers: {"Content-Type": "multipart/form-data"},
+            body: formData
           })
 
         if(imageResponse.ok){

@@ -48,14 +48,19 @@ export const reviewCreate = (spotId, review, user, imageUrl) => async dispatch =
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(review)
       })
+      //   ReviewImages:[]
+      //   User: {id: 1, firstName: 'Demo', lastName: 'lition'}
 
       if(response.ok){
         const review = await response.json()
         if(imageUrl){
+            const formData = new FormData();
+            formData.append("image", imageUrl);
             const imageResponse = await csrfFetch(`/api/reviews/${review.id}/images`, {
                 method: 'POST',
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({url: imageUrl})
+                headers: {"Content-Type": "multipart/form-data"},
+                body: formData
+                // body: JSON.stringify({url: imageUrl})
             })
 
             if(imageResponse.ok){
@@ -79,6 +84,20 @@ export const reviewCreate = (spotId, review, user, imageUrl) => async dispatch =
       }
 }
 
+// export const createReviewImage = (reviewId, imageUrl) => async dispatch => {
+//     const response = await csrfFetch(`/api/reviews/${reviewId}/images`, {
+//         method: 'POST',
+//         headers: {"Content-Type": "application/json"},
+//         body: JSON.stringify(imageUrl)
+//       })
+
+//     if(response.ok) {
+//         const image = await response.json()
+//         dispatch(spotReviews())
+//         return image
+//     }
+// }
+
 export const userReviews = () => async dispatch => {
     const response = await csrfFetch(`/api/reviews/current`)
 
@@ -95,6 +114,7 @@ export const spotReviews = (spotId) => async dispatch => {
     if(response.ok){
         const reviews = await response.json()
         dispatch(loadSpotReviews(reviews))
+        // return reviews
     }
 }
 
@@ -108,6 +128,7 @@ export const reviewUpdate = (spotId, review) => async dispatch => {
     if(response.ok){
         const review = await response.json()
         dispatch(updateReview(review))
+        // return review
     }
 }
 
@@ -135,7 +156,7 @@ const reviewReducer = (state = initialState, action) => {
             newState = {...state, spot: {...state.spot}}
             newState.spot[action.review.id] = action.review
             return newState
-
+            // return {...state, spot: {...state.spot, [action.review.id]: action.review}}
         case USER:
             newState = {...state, user: {...state.user}}
             action.reviews.Reviews.forEach(review => {

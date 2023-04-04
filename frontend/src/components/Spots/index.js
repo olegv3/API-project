@@ -1,13 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import SpotDetailCard from './SpotDetailCard'
 import './index.css'
+import Footer from '../Footer'
+
 
 function Spots() {
-
-    useEffect(() => {
-
-    })
 
     const spotsObj = useSelector(state => state.spots.allSpots)
 
@@ -21,6 +19,7 @@ function Spots() {
                 <SpotDetailCard key={spot.id} {...spot} />
                 ))}
             </div>
+            <Footer />
         </div>
     )
 }

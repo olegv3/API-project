@@ -28,6 +28,7 @@ const validateSignup = [
   handleValidationErrors
 ];
 
+// Sign up
 router.post('/', validateSignup, async (req, res, next) => {
     const { firstName, lastName, email, password, username } = req.body;
 
@@ -48,7 +49,6 @@ router.post('/', validateSignup, async (req, res, next) => {
     }
 
     if(errors.length) {
-      console.log('in the errors.length')
       const error = new Error()
       error.errors = errors
       error.statusCode = 400

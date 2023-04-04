@@ -4,6 +4,7 @@ const sequelize = require('sequelize');
 const { Op } = require('sequelize');
 const { requireAuth } = require("../../utils/auth.js");
 const { User, Spot, Booking, Review, SpotImage, ReviewImage } = require('../../db/models');
+const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3')
 
 router.get('/current', requireAuth, async (req, res, next) => {
     const userId = req.user.id
@@ -54,10 +55,10 @@ router.get('/current', requireAuth, async (req, res, next) => {
     })
 })
 
-router.post('/:reviewId/images', requireAuth, async (req, res, next) => {
-    console.log('in review image')
+router.post('/:reviewId/images', singleMulterUpload("image"), requireAuth, async (req, res, next) => {
     const userId = req.user.id
     const { url } = req.body
+    const imageURL = await singlePublicFileUpload(req.file);
     const review = await Review.findOne({
         where: {
             id: req.params.reviewId
@@ -91,7 +92,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res, next) => {
 
     const createdReviewImage = await ReviewImage.create({
         reviewId: review.id,
-        url
+        url: imageURL
     })
 
     return res.json({

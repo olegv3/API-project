@@ -1,33 +1,49 @@
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { getSpotsOfUser } from "../../../store/spots"
-import UserSpotDetails from "./UserSpotDetails"
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getSpotsOfUser } from "../../../store/spots";
+import UserSpotDetails from "./UserSpotDetails";
+import { Link } from "react-router-dom";
 
 export default function SpotsOfUser() {
-    const dispatch = useDispatch()
-    const spots = useSelector(state => state.spots.allSpots)
-    const [ userSpots, setUserSpots ] = useState('')
+  const dispatch = useDispatch();
+  const spots = useSelector((state) => state.spots.allSpots);
+  const [userSpots, setUserSpots] = useState("");
 
-    const getTheSpots = async () => {
-        let spotsOfUser = await dispatch(getSpotsOfUser())
-        setUserSpots(spotsOfUser.Spots)
-    }
-    useEffect(() => {
-        getTheSpots()
-    }, [spots])
+  const getTheSpots = async () => {
+    let spotsOfUser = await dispatch(getSpotsOfUser());
+    setUserSpots(spotsOfUser.Spots);
+  };
+  useEffect(() => {
+    getTheSpots();
+  }, [spots]);
 
-    if(!userSpots) return null
+  if (!userSpots) return null;
 
-    return (
-        <div style={{"margin":"40px", "padding":"0px 10px", "display":"flex", "flexDirection":"column", "border":"lightGray solid .5px", "borderRadius":"10px"}}>
-            <h2 style={{"borderBottom":"solid lightgray 1px", "padding":"10px"}}>Your Spots</h2>
-            {userSpots.length ? (
-                userSpots.map((spot) => (
-                    <UserSpotDetails key={spot.id} {...spot} />
-                    ))
-            ) : (<h5>No spots listed.</h5>)
-            }
-        </div>
-
-    )
+  return (
+    <div
+      style={{
+        margin: "40px",
+        padding: "0px 10px",
+        display: "flex",
+        flexDirection: "column",
+        border: "lightGray solid 1px",
+        borderRadius: "10px",
+      }}
+    >
+      <h2 style={{ borderBottom: "solid lightgray 1px", padding: "10px" }}>
+        Your Spots:
+      </h2>
+      {userSpots.length ? (
+        userSpots.map((spot) => (
+          <div key={spot.id}>
+            <Link to={`/spots/${spot.id}`}>
+              <UserSpotDetails {...spot} />
+            </Link>
+          </div>
+        ))
+      ) : (
+        <h5>No spots listed.</h5>
+      )}
+    </div>
+  );
 }

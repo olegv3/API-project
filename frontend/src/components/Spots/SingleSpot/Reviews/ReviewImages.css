@@ -1,0 +1,9 @@
+.reviewImageContainer {
+
+}
+
+.reviewImage {
+    width: 40em;
+    height: 40em;
+    object-fit: cover;
+}

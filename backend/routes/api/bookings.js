@@ -33,13 +33,12 @@ router.get('/current', requireAuth, async (req, res, next) => {
 
     const newBookings = []
     bookingList.forEach((booking) => {
-        
+        // verify that there is a spotimage
         if(booking.Spot.SpotImages.length){
             booking.Spot.previewImage = booking.Spot.SpotImages[0].url
         }
 
         delete booking.Spot.SpotImages
-        console.log(booking)
         newBookings.push(booking)
     });
 
@@ -150,13 +149,13 @@ router.delete('/:bookingId', requireAuth, async (req, res, next) => {
     const bookingStartDate = new Date(booking.startDate)
     const today = new Date()
 
-    if (userId !== booking.userId && userId !== spotOwnerId){
+    if (userId !== booking.userId){
         res.status(403)
         return res.json({
             "message": "Forbidden",
             "statusCode": 403
         })
-    } else if(today.getTime() >= bookingStartDate.getTime()) {
+    } else if(today.getTime() >= bookingStartDate.getTime() && today.getHours() > 16) {
         res.status(403)
         return res.json({
             "message": "Past bookings can't be modified",

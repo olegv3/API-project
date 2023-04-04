@@ -1,0 +1,12 @@
+.createImageFormContainer {
+    width: 20em;
+    height: 10em;
+    padding: 1em;
+}
+
+.imageForm {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1em;
+}

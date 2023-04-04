@@ -1,3 +1,58 @@
+.nav-bar-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: white;
+    height: fit-content;
+    border-bottom: solid 1px #c8c8c8;
+    position: sticky;
+    top: 0px;
+    z-index: 100;
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 93%;
+    height: 60px;
+    background-color: white;
+}
+
+.spot-id-padding {
+    padding: 0px 160px;
+}
+
+.profile-dropdown {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgb(0 0 0 / 12%);
+    margin-top: 34px;
+    max-height: calc(100vh - 100px);
+    min-width: 240px;
+    overflow-y: auto;
+    padding: 8px 0;
+    position: absolute;
+    right: 80px;
+    top: 50%;
+    top: 40px;
+}
+
+/* .buttonns-for-profile {
+    style={{"display": 'flex', 'alignItems': 'center', 'gap':'20px'}}
+    display: flex;
+    align-items: center;
+    gap: 20px;
+} */
+
+.home-link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: bolder;
+    color: rgb(255, 93, 93);
+    font-size: 22px;
+}
 @media only screen and (max-width: 650px) {
     img.filter-icon4, h4{
         display: none;

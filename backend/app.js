@@ -1,3 +1,4 @@
+//imports all of the packages that you need
 const express = require('express');
 require('express-async-errors');
 const morgan = require('morgan');
@@ -19,6 +20,10 @@ app.use(morgan('dev'));
 // parse cookies
 app.use(cookieParser());
 //parsing JSON
+app.use(express.json());
+
+// AWS
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Security Middleware
@@ -46,11 +51,12 @@ app.use(
     })
   );
 
-app.use(routes);
+app.use(routes); // Connect all the routes
 
 
 
 
+// Catch unhandled requests and forward to error handler.
 app.use((_req, _res, next) => {
   const err = new Error("The requested resource couldn't be found.");
   err.title = "Resource Not Found";
@@ -60,7 +66,8 @@ app.use((_req, _res, next) => {
 });
 
 app.use((err, _req, _res, next) => {
-  console.log('ERROR')
+  console.log('IN THE ERROR THING THAT TAKES AN ERROR')
+  // check if error is a Sequelize error:
   if (err instanceof ValidationError) {
     err.errors = err.errors.map((e) => e.message);
     err.title = 'Validation error';
@@ -68,8 +75,9 @@ app.use((err, _req, _res, next) => {
   next(err);
 });
 
+// Error formatter
 app.use((err, _req, res, _next) => {
-  console.log('ERROR')
+  console.log('IN THE ERROR THING THAT TAKES AN ERROR----------------------------')
   res.status(err.status || 500);
   console.error(err);
   res.json({

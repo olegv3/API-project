@@ -8,6 +8,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
+// checks to see whether or not req.body.credential and req.body.password are empty
 const validateLogin = [
   check('credential')
     .exists({ checkFalsy: true })
@@ -19,6 +20,7 @@ const validateLogin = [
   handleValidationErrors
 ];
 
+// Restore session user
 router.get('/', restoreUser, (req, res) => {
     const { user } = req;
     if (user) {

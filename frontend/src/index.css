@@ -1,5 +1,19 @@
+/* TODO Add site wide styles */
+* {
+    font-family: system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans',
+    'Helvetica Neue', sans-serif;
+}
+
+
 button {
     cursor: pointer;
+}
+
+html {
+    width: 100%;
+    height: 100%;
 }
 
 body {
@@ -30,7 +44,91 @@ form button, .demo-user-button {
     margin-top: 0px;
 }
 
-.main-wrapper {
+
+.bb {
+    border-bottom: 1px solid lightgray;
+}
+
+.ptb {
+    padding: 2em 0em;
+}
+
+.pb {
+    padding-bottom: 1em;
+}
+
+.fdc {
+    display: flex;
+    flex-direction: column;
+}
+
+.fdr {
+    display: flex;
+    flex-direction: row;
+}
+
+.fwb {
+    font-weight: bold;
+}
+
+.fclg {
+    color: rgb(122, 122, 122);
+}
+
+.cb {
+    color: black;
+}
+
+.g1 {
+    display: flex;
+    gap: 1em;
+}
+
+.jcc {
     display: flex;
     justify-content: center;
 }
+
+.jcse {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.aic {
+    display: flex;
+    align-items: center;
+}
+
+.p1 {
+    padding: 1em;
+}
+
+.fss {
+    font-size: 10px;
+}
+
+.tdu {
+    text-decoration: underline;
+}
+
+.link-underline {
+    text-decoration: underline;
+  }
+
+
+.centered-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - (/* height of your navigation bar */));
+    text-align: center;
+  }
+
+  .photo-no-exist img {
+    max-width: 40%; /* Adjust this value to control the size of the image */
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }

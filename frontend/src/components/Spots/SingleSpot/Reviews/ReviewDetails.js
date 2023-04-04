@@ -1,40 +1,76 @@
+import { useEffect } from "react"
+import { useRef } from "react"
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { removeReview } from "../../../../store/reviews"
+import OpenModalMenuItem from "../../../Navigation/OpenModalMenuItem"
 import './ReviewDetails.css'
+import ReviewImages from "./ReviewImages"
 
 export default function ReviewDetails (review) {
 
+    const [showMenu, setShowMenu] = useState(false);
+    const ulRef = useRef();
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
 
+
+    useEffect(() => {
+        if (!showMenu) return;
+
+        const closeMenu = (e) => {
+            if (!ulRef.current.contains(e.target)) {
+            setShowMenu(false);
+            }
+        };
+
+        document.addEventListener('click', closeMenu);
+
+        return () => document.removeEventListener("click", closeMenu);
+    }, [showMenu]);
+
+    const closeMenu = () => setShowMenu(false);
+
     const deleteAReview = async () => {
-        const deletedReview = await dispatch(removeReview(review.id, review.spotId))
-        console.log(deletedReview)
-        console.log('success')
+        await dispatch(removeReview(review.id, review.spotId))
     }
+
+    const created = new Date(review.createdAt)
+    const monthName = created.toLocaleString('en-US', { month: 'long' });
+    const year = created.getFullYear()
 
     if(!review.User) return null
     return (
-        <div style={{"display":"flex", "gap":"100px", "borderBottom":"lightGray 1px solid"}}>
+        <div className="singleReviewContainer g1 bb fdc">
             <div>
-                <h4 style={{"marginBottom":"0px"}}>
-                    {review.User.firstName} {review.User.lastName} {review.stars}
-                </h4>
-                <p style={{"marginTop":"0px", "width":"10rem"}}>
-                    {review.review}
-                </p>
+                <div className="fdr aic g1">
+                    <i style={{"fontSize":"30px"}} className="fa-solid fa-user"></i>
+                    <div>
+                        <h4 style={{"margin":"0px"}}>{review.User.firstName}</h4>
+                        <span className="fclg">{monthName} {year}</span>
+                    </div>
+                </div>
             </div>
-            {review.ReviewImages.length ? (
-                <div style={{"display":"flex", "alignItems":"center"}}>
-                    <img style={{"height":"100px", "width":"100px"}} src={review.ReviewImages[0].url} alt={'pic'}/>
-                </div>
-            ) : (null)}
-
-            {user && user.id === review.userId && (
-                <div style={{"display":"flex", "alignItems":"center"}}>
-                    <button className="delete-review-button" onClick={deleteAReview}>Delete review</button>
-                </div>
-            )}
+            <div>
+                {review.review}
+            </div>
+            <div className="fdr">
+                {review.ReviewImages.length ? (
+                    <div style={{"listStyleType":"none", "textDecoration":"underline", "paddingLeft":"0px", "fontWeight":"600"}}>
+                        <OpenModalMenuItem
+                        className='imagesModalButton'
+                        itemText="Show Pictures"
+                        onItemClick={closeMenu}
+                        modalComponent={<ReviewImages images={Object.values(review.ReviewImages)}/>}
+                        />
+                    </div>
+                ) : (null)}
+                {user && user.id === review.userId && (
+                    <div style={{"display":"flex", "alignItems":"center"}}>
+                        <button className="delete-review-button" onClick={deleteAReview}>Delete review</button>
+                    </div>
+                )}
+            </div>
         </div>
     )
 }

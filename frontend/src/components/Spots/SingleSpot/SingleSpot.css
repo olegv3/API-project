@@ -1,95 +1,131 @@
 .wrapper-for-info {
-    padding: 0 12%;
-    margin: 0px 50px 0px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 20%;
+    min-width: fit-content;
+    /* border: black solid 3px; */
+}
+
+.bb {
+    border-bottom: 1px solid lightgray;
+}
+
+.pb {
+    padding-bottom: 2em;
 }
 
 .header {
-    margin-top: 50px;
+    padding-top: 20px;
+    width: 100%;
 }
 
-.header h2 {
-    font-size: 24px;
-    font-weight: 600;
-    color: black;
-    margin-bottom: -15px;
+.spot-header {
+    margin: 0px;
+}
+
+
+.imageFormButton {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 1em;
+    min-width: 17em;
+    align-items: center;
+}
+
+.cur {
+    cursor: pointer;
+}
+
+#modalButtonImage {
+    border: 1px solid red;
+}
+
+
+.share {
+    display: flex;
+    gap: 5px;
+    padding: 10px;
 }
 
 .ratings {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    margin-bottom: -15px;
 }
 
-.ratings span {
-    margin: 20px 0px;
+.details {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 3em;
+}
+.details-wrapper {
+    border: 1px solid red;
 }
 
-.ratings span {
-    color: black;
-    font-size: 14px;
+.houseInfo {
+    width: 50%;
+    padding-right: 5%;
+}
+
+.host {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.reserve-form {
+    width: 100%;
+}
+
+.spacing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 100px;
+    padding-top: 15px;
 }
 
 .image-container {
     display: grid;
-    grid-gap: 10px;
-    min-height: 350px;
-    grid-template-areas:
-        "first second third"
-        "first fourt fifth";
-    grid-template-columns: 50% 25% 25%;
-    margin: 20px 0px 20px 0px;
-}
-
-.image-container img {
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-template-rows: minmax(10em, 1fr) minmax(10em, 1fr);
+    gap: 10px;
+    height: 100%;
     width: 100%;
-    display: block;
+    margin-top: 10px;
+    border-radius: 10px;
 }
 
-.image-container > img:first-child {
-    grid-area: first;
+.grid_item {
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+}
+
+.first_grid_item {
+    border-radius: 10px 0px 0px 10px;
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+    width: inherit;
+    height: inherit;
+}
+
+.border_2 {
+    border-radius: 0px 10px 0px 0px;
+}
+
+.border_4 {
+   border-radius: 0px 0px 10px 0px;
 }
 
 .spot-image {
-    width: 100%;
-    height: 100%;
-}
-
-.first-spot-image {
-    width: 100%;
-    height: 100%;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-}
-
-.spot-image:nth-child(3) {
-    border-top-right-radius: 15px;
-}
-
-.spot-image:last-child {
-    border-bottom-right-radius: 15px;
-}
-
-.reserve-form div {
-    text-align: right;
-    font-size: 20px;
-    font-weight: 300;
-    margin-top: -53px;
-    margin-bottom: 20px;
-}
-
-.details h3 {
-    margin-left: -5px;
-    font-size: 20px;
-    font-weight: 500;
-    color: black;
-}
-
-h4 {
-    margin-left: -5px;
-    font-size: 14px;
-    font-weight: 400;
-    color: black;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
 }
 
 .create-review-button {
@@ -101,10 +137,4 @@ h4 {
     color: white;
     font-weight: bolder;
     box-sizing: border-box;
-    margin-bottom: 20px;
-}
-
-.delete-review-button {
-    position: absolute;
-    left: 747px;
 }
