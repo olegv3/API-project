@@ -14,10 +14,8 @@ export default function CreateSpotForm () {
     const [ name, setName ] = useState('')
     const [ description, setDescription ] = useState('')
     const [ price, setPrice ] = useState('')
-    // const [ imageNumber, setImageNumber ] = useState('')
     const [ url, setURL ] = useState('')
     const [ errors, setErrors ] = useState([])
-    // const [ spotImages ] = useState([])
 
     const updateAddress = (e) => setAddress(e.target.value)
     const updateCity = (e) => setCity(e.target.value)
@@ -26,8 +24,6 @@ export default function CreateSpotForm () {
     const updateName = (e) => setName(e.target.value)
     const updateDescription = (e) => setDescription(e.target.value)
     const updatePrice = (e) => setPrice(e.target.value)
-    // const updateImageNumber = (e) => setImageNumber(e.target.value)
-
 
     const clearData = (createdSpot) => {
         setAddress('')
@@ -44,7 +40,6 @@ export default function CreateSpotForm () {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
 
        const payload = {
             address,
@@ -73,31 +68,8 @@ export default function CreateSpotForm () {
         if (file) setURL(file);
     }
 
-    // const demoSpot = async () => {
-    //     const payload = {
-    //         address: '2345 New Valley Way',
-    //         city: "Westminster",
-    //         state: "Maryland",
-    //         country: "United States",
-    //         name: "Hills & Home",
-    //         description: "Rolling hills",
-    //         price: 120
-    //     }
-    //     const spotImage = {
-    //         url: 'https://a0.muscache.com/im/pictures/e69b3403-3d09-4f3f-b997-1a21164d1ee7.jpg?im_w=720',
-    //         preview: true
-    //     }
-
-    //     await dispatch(createSpot(payload, spotImage)).then(createdSpot => clearData(createdSpot)).catch(
-    //         async (res) => {
-    //             const data = await res.json();
-    //             if (data && data.errors) setErrors(data.errors);
-    //         });
-    // }
-
     return (
         <div style={{"display":"flex", "alignItems":"center", "justifyContent":"center"}}>
-            {/* <button onClick={demoSpot}>Demo spot</button> */}
             <form className="create-spot-form" onSubmit={handleSubmit}>
                 <button onClick={() => history.push('/')} style={{"padding":"0px", "height":"0px", "color":"black", "width":"20px", "position":"relative", "right":"163px", "border":"none", "background":"none", "cursor":"pointer"}}>X</button>
                 {errors.length !== 0 &&
@@ -156,12 +128,6 @@ export default function CreateSpotForm () {
                     value={price}
                     onChange={updatePrice}
                 />
-                {/* <input style={{"borderRadius":"10px", "marginBottom": "10px"}}
-                    type={'number'}
-                    placeholder={'Number of Spot images'}
-                    value={imageNumber}
-                    onChange={updateImageNumber}
-                /> */}
                 <input style={{"borderRadius":"10px", "marginBottom": "10px"}}
                     type='file'
                     onChange={updateURL}
