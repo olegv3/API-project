@@ -41,19 +41,6 @@ function ImageForm({spotId}) {
               const data = await res.json();
               if (data && data.errors) setErrors(data.errors);
           });
-        // e.preventDefault()
-        // await csrfFetch(`/api/spots/${spotId}/images`, {
-        //     method: 'POST',
-        //     headers: {"Content-Type": "application/json"},
-        //     body: JSON.stringify({url: image, preview: false})
-        //   })
-        //   .then(createdImage => dispatch(getSpotById(spotId)))
-        //   .then(() => clearData())
-        //   .catch(
-        //     async (res) => {
-        //         const data = await res.json();
-        //         if (data && data.errors) setErrors(data.errors);
-        //     });
     }
 
     const updateFile = (e) => {

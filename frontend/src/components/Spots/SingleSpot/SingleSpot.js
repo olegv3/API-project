@@ -49,6 +49,11 @@ function SingleSpot() {
     const rating = spot.avgStarRating
     const reviews = Object.values(useSelector(state => state.reviews.spot))
 
+    const handleImageError = (e) => {
+        e.target.src = 'https://www.vermontframes.com/wp-content/uploads/2020/12/placeholder.png';
+        e.target.onError = null;
+    };
+
     if (!spot.Owner) return null
     return (
         <div className="wrapper-for-info">
@@ -86,15 +91,14 @@ function SingleSpot() {
                                 modalComponent={<DeleteImages images={spot.SpotImages} closeMenu={closeMenu} spotId={spot.id} />}
                             />
                         </div>
-                    </div>}
-
+                        </div>}
                 </div>
             </div>
             <div className="image-container">
                 {spot.SpotImages?.map((image, i) => (
                     (i < 5 && (i === 0 ?
-                        <img key={i} style={{ "objectFit": "cover" }} className="first_grid_item" src={image.url} alt={i} />
-                        : <img key={i} style={{ "objectFit": "cover" }} className={`grid_item border_${i}`} src={image.url} alt={i} />))
+                        <img key={i} style={{ "objectFit": "cover" }} className="first_grid_item" src={image.url} alt={i} onError={handleImageError} />
+                        : <img key={i} style={{ "objectFit": "cover" }} className={`grid_item border_${i}`} src={image.url} alt={i} onError={handleImageError} />))
                 ))}
             </div>
             <div className="spotInfo">
@@ -116,7 +120,6 @@ function SingleSpot() {
                                 <span className="fclg">100% of recent guests loved the area</span>
                             </div>
                             <div className="fdc">
-
                                 <span className="fwb">Great experience</span>
                                 <span className="fclg">100% of recent guests love to come back</span>
                             </div>
